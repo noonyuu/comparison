@@ -7,7 +7,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
-    command: air
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -22,6 +21,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    command: air
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/apicomparator
     depends_on:
