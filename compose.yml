@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
@@ -16,14 +16,17 @@ services:
       - backend
 
   backend:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+      - "8090:8090"
     command: air
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/apicomparator
+    volumes: #マウントディレクトリ
+      - ./backend:/app
     depends_on:
       - mongodb
 
